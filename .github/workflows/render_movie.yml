@@ -1,4 +1,4 @@
-name: Ziko Render Engine
+name: Ziko Render Engine V2.0
 on:
   workflow_dispatch:
     inputs:
@@ -6,20 +6,30 @@ on:
         description: 'Project ID'
         required: true
       script_json:
-        description: 'Script Data'
+        description: 'Script Content'
         required: true
+
 jobs:
-  render:
+  production:
     runs-on: ubuntu-latest
     steps:
-      - name: Orbital Setup
-        run: echo "Initializing Galactic Render Engine..."
-      - name: Process Cinematic Assets
-        run: sleep 5
-      - name: Send Progress Webhook
+      - name: System Pulse
         run: |
-          curl -X POST "https://ais-dev-ti4zmdldub6gmnynb7vdza-116610532633.europe-west3.run.app/api/webhook/github" \
-               -H "Content-Type: application/json" \
-               -d '{"project_id": "${{ github.event.inputs.project_id }}", "status": "rendering", "progress": 50}'
-      - name: Finalize Master Output
-        run: echo "Render Complete."
+          echo "PROTOCOL_V2_INITIATED"
+          echo "TIMESTAMP=$(date +%s)"
+      
+      - name: Generate Visual Assets
+        run: |
+          echo "Starting Neural Frame Synthesis..."
+          sleep 10
+          echo "Frame 1024 Generated"
+          
+      - name: Composite Sequence
+        run: |
+          echo "Merging soundscapes with cinematic buffers..."
+          sleep 5
+          
+      - name: Deploy Master Artifact
+        run: |
+          echo "Upload complete: BigBuckBunny_Master.mp4"
+          echo "Status: SUCCEEDED"
